@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="IcecreamMAUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:IcecreamMAUI"
+    xmlns:pages="clr-namespace:IcecreamMAUI.Pages"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Shell.FlyoutBehavior="Flyout"
+    Title="IcecreamMAUI">
+
+    <Shell.Behaviors> <!--change the color of the top of the app-->
+        <toolkit:StatusBarBehavior StatusBarColor="DeepPink" 
+                                   StatusBarStyle="LightContent" />
+    </Shell.Behaviors>
+
+    <!--<ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />-->
+
+    <ShellContent ContentTemplate="{DataTemplate pages:OnboardingPage}" 
+                  Shell.FlyoutBehavior="Disabled"
+                  Shell.FlyoutItemIsVisible="False"/> <!--disable shell flyout for the onBoarding page-->
+
+    
+    <TabBar FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent 
+            Title="Home"
+            ContentTemplate="{DataTemplate pages:HomePage}"
+            Icon="home"
+            Route="HomePage" />
+
+        <ShellContent 
+            Title="Cart"
+            ContentTemplate="{DataTemplate pages:CartPage}"
+            Icon="cart"
+            Route="CartPage" />
+
+        <ShellContent 
+            Title="Profile"
+            ContentTemplate="{DataTemplate pages:ProfilePage}"
+            Icon="user"
+            Route="ProfilePage" />
+    </TabBar>
+
+    <MenuItem Text="Sign Out"
+              IconImageSource="logout" 
+              Clicked="SignoutMenuItem_Clicked"/>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="Auto,*, Auto" 
+                  RowDefinitions="Auto,Auto"
+                  Padding="10" 
+                  RowSpacing="5"
+                  ColumnSpacing="15">
+                <Image 
+                    Grid.Row="0" 
+                    Grid.Column="0" 
+                    HeightRequest="24" 
+                    Source="{Binding FlyoutIcon}" 
+                    WidthRequest="24">
+                    <Image.Behaviors>
+                        <!--change the color of the icons-->
+                        <toolkit:IconTintColorBehavior TintColor="DeepPink" />
+                    </Image.Behaviors>
+                </Image>
+                <Label 
+                    Grid.Row="0" 
+                    Grid.Column="1" 
+                    Text="{Binding Title}"
+                    TextColor="DeepPink" 
+                    FontSize="16"/>
+                <Image 
+                    Grid.Row="0" Grid.Column="2" 
+                    Source="rightarrow"
+                    WidthRequest="24"/>
+                <BoxView 
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3"
+                    HeightRequest="1"
+                    Color="Pink"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Shell.MenuItemTemplate> <!--signout navigation-->
+        <DataTemplate>
+        <Grid 
+            ColumnDefinitions="Auto,*, Auto" 
+            RowDefinitions="Auto,Auto"
+            Padding="10" 
+            RowSpacing="5"
+            ColumnSpacing="15">
+        <Image 
+            Grid.Row="0" 
+            Grid.Column="0" 
+            HeightRequest="24" 
+            Source="{Binding Icon}" 
+            WidthRequest="24">
+            <Image.Behaviors> 
+                <!--change the color of the icons--> 
+                <toolkit:IconTintColorBehavior TintColor="DeepPink" />
+            </Image.Behaviors>
+        </Image>
+        <Label 
+            Grid.Row="0" 
+            Grid.Column="1" 
+            Text="{Binding Title}"
+            TextColor="DeepPink" 
+            FontSize="16"/>
+        </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    <Shell.FlyoutHeader>
+        <Border BackgroundColor="DeepPink"
+                Padding="10" 
+                StrokeThickness="0"> <!--when we create a border for the background color, there is a slight gap around the borders, setting stroke thickness to 0 removes it-->
+            <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Image Source="icecream"
+                   HeightRequest="150"
+                   WidthRequest="150"
+                   HorizontalOptions="Center"/>
+                <Label Text="MAUI Ice Cream" 
+                       HorizontalOptions="Center" 
+                       FontSize="18" 
+                       TextTransform="Uppercase"
+                       TextColor="white" />
+            </VerticalStackLayout>
+        </Border>
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <Border BackgroundColor="DeepPink"
+                StrokeThickness="0"
+                Padding="10">
+            <Label 
+                Text="Developed by Wei Yeh" 
+                TextColor="white" 
+                BackgroundColor="DeepPink" 
+                FontSize="15" 
+                FontAttributes="Bold" 
+                HorizontalTextAlignment="Center"/>
+            <Border.GestureRecognizers> <!--onclick event-->
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            </Border.GestureRecognizers>
+        </Border>
+    </Shell.FlyoutFooter>
+
+</Shell>

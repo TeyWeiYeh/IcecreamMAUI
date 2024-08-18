@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IcecreamMAUI.Pages.OnboardingPage"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="*, Auto" Padding="0,0,0,40"> <!--padding for bottom-->
+        <VerticalStackLayout Grid.Row="0" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+            <Image Source="icecream"
+                   HeightRequest="250"
+                   WidthRequest="250"
+                   Aspect="AspectFit" />
+            <Label Text="Welcome"
+                   FontSize="20"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"/>
+            <Label Text="MAUI Ice Creams"
+                   FontSize="25"
+                   TextTransform="Uppercase"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"/>
+            <Label Text="Home of Delicious Ice Creams"
+                   FontSize="18"
+                   HorizontalOptions="Center"/> 
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="1" Spacing="20" HorizontalOptions="Center">
+            <Button Text="Sign Up" Clicked="SignUp_Clicked"></Button>
+            <Button Text="Sign In" Clicked="SignIn_Clicked"></Button>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
