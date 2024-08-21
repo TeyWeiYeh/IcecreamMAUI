@@ -1,14 +1,17 @@
+using IcecreamMAUI.ViewModels;
+
 namespace IcecreamMAUI.Pages;
 
 public partial class SignInPage : ContentPage
 {
-	public SignInPage()
+	public SignInPage(AuthViewModel authViewModel)
 	{
 		InitializeComponent();
+        BindingContext = authViewModel;
 	}
 
-    private async void Button_Clicked(object sender, EventArgs e)
+    private async void SigninLabel_Tapped(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+        await Shell.Current.GoToAsync($"SignupPage");
     }
 }

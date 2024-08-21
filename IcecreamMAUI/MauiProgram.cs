@@ -1,5 +1,18 @@
 ﻿using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
+using Refit;
+using IcecreamMAUI.Services;
+using IcecreamMAUI.ViewModels;
+using IcecreamMAUI.Pages;
+
+
+
+#if ANDROID
+using Xamarin.Android.Net;
+using System.Net.Security;
+#elif IOS
+using Security;
+#endif 
 
 namespace IcecreamMAUI
 {
@@ -22,7 +35,57 @@ namespace IcecreamMAUI
     		builder.Logging.AddDebug();
 #endif
 
+
+
+            builder.Services.AddTransient<AuthViewModel>()
+                .AddTransient<SignupPage>()
+                .AddTransient<SignInPage>();
+
+            ConfigureRefit(builder.Services);
             return builder.Build();
+        }
+
+        //uses the same structure as our webapi endpoints
+        //and auto generates http client logic and making the request http calls and pass the response
+        //for the diff clients(android and ios)
+        private static void ConfigureRefit(IServiceCollection services)
+        {
+            var refitSettings = new RefitSettings
+            {
+                HttpMessageHandlerFactory = () =>
+                {
+#if ANDROID
+                    //return HttpMMessageHandler
+                    return new AndroidMessageHandler
+                    {
+                        ServerCertificateCustomValidationCallback = (httpRequestMessage, certificate, chain, sslPolicyErrors) =>
+                        {
+                            return certificate?.Issuer == "CN=localhost" || sslPolicyErrors == SslPolicyErrors.None;
+                        }
+                    };
+#elif IOS
+                    return new NSUrlSessionHandler
+                    {
+                        //trust the cert if its from localhost
+                        TrustOverrideForUrl = (NSUrlSessionHandler sender, string url, SecTrust trust) =>
+                        url.StartsWith("https://localhost")
+                    };
+#endif
+                    return null;
+                }
+            };
+
+            services.AddRefitClient<IAuthApi>(refitSettings)
+                .ConfigureHttpClient(httpClient =>
+                {
+                    //if the device is android, use the android loopback address (10.0.2.2) which is the android localhost;
+                    //else for all other device type use localhost
+                var baseUrl = DeviceInfo.Platform == DevicePlatform.Android
+                                ? "https://10.0.2.2:7204"
+                                : "https://localhost:7204";
+
+                    httpClient.BaseAddress = new Uri(baseUrl);
+                });
         }
     }
 }
