@@ -11,9 +11,10 @@ using System.Threading.Tasks;
 
 namespace IcecreamMAUI.ViewModels
 {
-    public partial class AuthViewModel(IAuthApi authAPI) : BaseViewModel
+    public partial class AuthViewModel(IAuthApi authAPI, AuthService authService) : BaseViewModel
     {
         private readonly IAuthApi _authAPI = authAPI;
+        private readonly AuthService _authService = authService;
 
         [ObservableProperty, NotifyPropertyChangedFor(nameof(CanSignup))]
         private string? _name;
@@ -31,7 +32,7 @@ namespace IcecreamMAUI.ViewModels
             && !string.IsNullOrEmpty(Password);
 
         public bool CanSignup => CanSignin
-            && !string.IsNullOrEmpty(Password)
+            && !string.IsNullOrEmpty(Name)
             && !string.IsNullOrEmpty(Address);
 
         //validates that all the four properties have valid values
@@ -47,7 +48,7 @@ namespace IcecreamMAUI.ViewModels
 
                 if(result.IsSuccess)
                 {
-                    await ShowAlertAsync(result.data.Token);
+                    _authService.Signin(result.data);
                     //Navigate to HomePage
                     await GoToAsync($"//{nameof(HomePage)}", animate: true);
                 }
@@ -80,7 +81,7 @@ namespace IcecreamMAUI.ViewModels
 
                 if (result.IsSuccess)
                 {
-                    await ShowAlertAsync(result.data.user.Name);
+                    _authService.Signin(result.data);
                     //Navigate to HomePage
                     await GoToAsync($"//{nameof(HomePage)}", animate: true);
                 }

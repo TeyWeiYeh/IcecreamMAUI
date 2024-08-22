@@ -43,7 +43,7 @@ namespace IcecreamMAUI.API.Services
             catch (Exception ex)
             {
                 //or failure 
-                return ResultWithDataDto<AuthResponseDto>.Failure("Email already exists");
+                return ResultWithDataDto<AuthResponseDto>.Failure(ex.Message);
             } 
         }
 
@@ -55,10 +55,10 @@ namespace IcecreamMAUI.API.Services
                 .FirstOrDefaultAsync(u => u.Email == dto.Email);
 
             //doesn't exist
-            if (dbUser == null)
+            if (dbUser is null)
                 return ResultWithDataDto<AuthResponseDto>.Failure("User not found");
             //when comparing the converted to hash password with the one store in the database, check if they're equal
-            if(!_passwordService.AreEqual(dto.Password, dbUser.Salt, dbUser.Hash))
+            if (!_passwordService.AreEqual(dto.Password, dbUser.Salt, dbUser.Hash))
                 return ResultWithDataDto<AuthResponseDto>.Failure("Incorrect Password");
 
             return GenerateAuthResponse(dbUser);

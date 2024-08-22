@@ -6,13 +6,14 @@ namespace IcecreamMAUI.API.Services
     public class PasswordService
     {
         private const int SaltSize = 10;
-        public (string salt, string hash) GenerateSaltAndHash(string plainPassword) 
+        public (string salt, string hashedPassword) GenerateSaltAndHash(string plainPassword) 
         {
             if (string.IsNullOrWhiteSpace(plainPassword))
                 throw new ArgumentNullException(nameof(plainPassword));
 
             var buffer = RandomNumberGenerator.GetBytes(SaltSize);
             var salt =  Convert.ToBase64String(buffer);
+
             var hashedPassword = GenerateHashedPassword(plainPassword, salt);
 
             return (salt, hashedPassword);
@@ -21,7 +22,7 @@ namespace IcecreamMAUI.API.Services
         //retrieve the salt and hashed password from the db for that user
         //then generate the same password from plain password and salt 
         //and compare to see if it matches the hashed password
-        public bool AreEqual(string plainPassword, string hashedPassword, string salt)
+        public bool AreEqual(string plainPassword, string salt, string hashedPassword)
         {
             //difference between hashing and encryption: hashing is 1 way cannot be dehashed 
             //encryption is 2 way, can be decrypted

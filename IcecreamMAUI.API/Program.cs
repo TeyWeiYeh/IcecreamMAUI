@@ -16,7 +16,8 @@ builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(conne
 
 builder.Services.AddTransient<TokenService>()
                 .AddTransient<PasswordService>()
-                .AddTransient<AuthService>(); //inject our services, transient so it doesn't eat up our memory
+                .AddTransient<AuthService>()
+                .AddTransient<IcecreamService>(); //inject our services, transient so it doesn't eat up our memory
 
 builder.Services.AddAuthentication(options =>
 {

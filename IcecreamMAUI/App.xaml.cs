@@ -1,12 +1,17 @@
-﻿namespace IcecreamMAUI
+﻿using IcecreamMAUI.Services;
+
+namespace IcecreamMAUI
 {
+    //the first page that gets loaded when we open the app
     public partial class App : Application
     {
-        public App()
+        public App(AuthService authService)
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            authService.Initialize();
+
+            MainPage = new AppShell(authService);
         }
     }
 }

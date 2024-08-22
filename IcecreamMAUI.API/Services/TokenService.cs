@@ -45,7 +45,7 @@ namespace IcecreamMAUI.API.Services
             var token = new JwtSecurityToken(
                 issuer: issuer,
                 audience: "*",
-                claims: [],
+                claims: claims,
                 expires: DateTime.UtcNow.AddMinutes(expireInMinutes),
                 signingCredentials: credentials) ;
 

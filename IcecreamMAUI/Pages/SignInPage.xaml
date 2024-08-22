@@ -24,19 +24,19 @@
             <!--when we key in our address and enter, it will go to next line
         sth like text area-->
 
-            <Label Text="Not a user? Create account"
+            <Label Text="New user? Create account"
                FontSize="15"
                FontAttributes="Bold"
                TextColor="DeepPink">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="SigninLabel_Tapped"></TapGestureRecognizer>
+                    <TapGestureRecognizer Tapped="SignupLabel_Tapped"></TapGestureRecognizer>
                 </Label.GestureRecognizers>
             </Label>
 
             <!--only enable the button when user has entered the details correctly and then calls the sign up method-->
-            <Button Text="Sign up" 
-                IsEnabled="{Binding CanSignup}" 
-                Command="{Binding SignupCommand}"/>
+            <Button Text="Sign in" 
+                IsEnabled="{Binding CanSignin}" 
+                Command="{Binding SigninCommand}"/>
 
         </VerticalStackLayout>
 

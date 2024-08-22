@@ -12,6 +12,6 @@ public partial class SignupPage : ContentPage
 
     private async void SigninLabel_Tapped(object sender, TappedEventArgs e)
     {
-		await Shell.Current.GoToAsync($"//{nameof(SignInPage)}");
+		await Shell.Current.GoToAsync($"{nameof(SignInPage)}");
     }
 }

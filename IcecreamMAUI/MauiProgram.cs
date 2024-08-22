@@ -41,6 +41,12 @@ namespace IcecreamMAUI
                 .AddTransient<SignupPage>()
                 .AddTransient<SignInPage>();
 
+            //same instance throughout the app, dc if we are creating another instance
+            builder.Services.AddSingleton<AuthService>();
+
+            //fresh instance of authservice whenever we run our app
+            builder.Services.AddTransient<OnboardingPage>();
+
             ConfigureRefit(builder.Services);
             return builder.Build();
         }

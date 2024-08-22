@@ -10,8 +10,8 @@ public partial class SignInPage : ContentPage
         BindingContext = authViewModel;
 	}
 
-    private async void SigninLabel_Tapped(object sender, EventArgs e)
+    private async void SignupLabel_Tapped(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync($"SignupPage");
+        await Shell.Current.GoToAsync(nameof(SignupPage));
     }
 }

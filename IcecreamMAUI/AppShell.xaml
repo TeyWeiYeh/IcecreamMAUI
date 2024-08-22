@@ -21,7 +21,8 @@
 
     <ShellContent ContentTemplate="{DataTemplate pages:OnboardingPage}" 
                   Shell.FlyoutBehavior="Disabled"
-                  Shell.FlyoutItemIsVisible="False"/> <!--disable shell flyout for the onBoarding page-->
+                  Shell.FlyoutItemIsVisible="False"
+                  Route="OnboardingPage"/> 
 
     
     <TabBar FlyoutDisplayOptions="AsMultipleItems">
