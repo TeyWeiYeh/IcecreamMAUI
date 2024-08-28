@@ -20,6 +20,8 @@ namespace IcecreamMAUI
                 typeof(MyOrdersPage),
                 typeof(ProfilePage),
                 typeof(CartPage),
+                typeof(MyOrdersPage),
+                typeof(DetailsPage),
             ];
 
         private static void RegisterRoutes() {
