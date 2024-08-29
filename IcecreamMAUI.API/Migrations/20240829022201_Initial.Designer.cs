@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace IcecreamMAUI.API.Data.Migrations
+namespace IcecreamMAUI.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240818143853_Initial")]
+    [Migration("20240829022201_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -618,7 +618,7 @@ namespace IcecreamMAUI.API.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("Flavor")
+                    b.Property<string>("Flavour")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");

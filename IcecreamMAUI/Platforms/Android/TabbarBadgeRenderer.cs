@@ -42,7 +42,8 @@ namespace IcecreamMAUI
                 }
             }
 
-            private void CartViewModel_TotalCartCountChanged(object? sender, int newCount) => UpdateBadge(CartViewModel.TotalCartCount);
+            private void CartViewModel_TotalCartCountChanged(object? sender, int newCount) => 
+                UpdateBadge(CartViewModel.TotalCartCount);
 
             private void UpdateBadge(int count)
             {

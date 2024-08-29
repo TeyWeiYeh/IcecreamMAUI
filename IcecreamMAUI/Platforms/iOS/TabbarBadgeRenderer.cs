@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UIKit;
 
-namespace IcecreamMAUI.Platforms.iOS
+namespace IcecreamMAUI
 {
     public class TabbarBadgeRenderer : ShellRenderer
     {

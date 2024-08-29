@@ -21,7 +21,7 @@ namespace IcecreamMAUI.API.Data.Entities
         public int Quantity { get; set; }
 
         [Required, MaxLength(50)]
-        public string Flavor { get; set; }
+        public string Flavour { get; set; }
 
         [Required, MaxLength(50)]
         public string Topping { get; set; }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace IcecreamMAUI.API.Data.Migrations
+namespace IcecreamMAUI.API.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -92,7 +92,7 @@ namespace IcecreamMAUI.API.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    Flavor = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Flavour = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Topping = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     TotalPrice = table.Column<double>(type: "float", nullable: false)
                 },

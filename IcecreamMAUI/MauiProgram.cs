@@ -30,9 +30,9 @@ namespace IcecreamMAUI
                 {
 #if ANDROID || IOS
                     h.AddHandler<Shell, TabbarBadgeRenderer>();
-                });
-#endif
 
+#endif
+                });
 
 #if DEBUG
             builder.Logging.AddDebug();

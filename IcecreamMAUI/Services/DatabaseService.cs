@@ -5,7 +5,7 @@ namespace IcecreamMAUI.Services
 {
     public class DatabaseService : IAsyncDisposable
     {
-        private const string DatabaseName = "Icecream1.db1";
+        private const string DatabaseName = "Icecream7.db1";
 
         private static readonly string _databasePath = Path.Combine(FileSystem.AppDataDirectory, DatabaseName);
 
