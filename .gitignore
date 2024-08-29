@@ -363,5 +363,12 @@ MigrationBackup/
 FodyWeavers.xsd
 
 #migrations folder
-/IcecreamMAUI.API/Migrations
+/IcecreamMAUI.API/Migrations/
 *.cs
+/IcecreamMAUI.API/Migrations/20240829022201_Initial.Designer.cs
+/IcecreamMAUI.API/Migrations/20240829022201_Initial.Designer.cs
+/IcecreamMAUI.API/Migrations/20240829022201_Initial.Designer.cs
+/IcecreamMAUI.API/Migrations/20240829022201_Initial.cs
+/IcecreamMAUI.API/Migrations/20240829022201_Initial.Designer.cs
+/.gitignore
+/IcecreamMAUI.API/Migrations/20240829022201_Initial.cs
