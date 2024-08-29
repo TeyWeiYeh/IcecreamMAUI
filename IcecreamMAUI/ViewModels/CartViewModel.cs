@@ -64,9 +64,6 @@ namespace IcecreamMAUI.ViewModels
                 CartItem.Id = entity.Id;
 
                 CartItems.Add(CartItem);
-
-                //await _databaseService.AddCartItem(new Data.CartItemEntity(CartItem));
-
                 await ShowToastAsync("Icecream added to cart");
             }
 

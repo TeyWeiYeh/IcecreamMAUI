@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+#migrations folder
+./Migrations/
+/IcecreamMAUI.API/Migrations/20240829022201_Initial.cs
+/IcecreamMAUI.API/Migrations/20240829022201_Initial.Designer.cs
+*.cs
